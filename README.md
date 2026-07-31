@@ -45,8 +45,8 @@ Elegido porque:
 ## Roadmap del proyecto
 
 - [x] Selección del dataset y definición del objetivo de negocio
-- [ ] Limpieza y preparación de datos (`data/`)
-- [ ] Dashboard en Power BI (`powerbi/`)
+- [x] Limpieza y preparación de datos (`data/`)
+- [ ] Dashboard en Power BI (`powerbi/`) — guía de construcción lista, `.pbix` pendiente de subir
 - [ ] Dashboard interactivo en HTML con insights y "so what" (`dashboard/`)
 
 ## Estructura del repositorio
