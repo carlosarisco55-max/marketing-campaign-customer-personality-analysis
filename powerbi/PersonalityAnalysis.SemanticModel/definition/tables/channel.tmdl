@@ -1,0 +1,44 @@
+table channel
+	lineageTag: f1348c59-382d-4776-a858-ee53e7a42eb0
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: dd283247-7afa-46c5-b09c-22d2619f9b90
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Channel
+		dataType: string
+		lineageTag: c3943551-f6a2-4418-a368-9feea9e4a02b
+		summarizeBy: none
+		sourceColumn: Channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Purchases
+		dataType: int64
+		formatString: 0
+		lineageTag: 547f29aa-0af9-48fc-88d3-b28be50b550e
+		summarizeBy: sum
+		sourceColumn: Purchases
+
+		annotation SummarizationSetBy = Automatic
+
+	partition channel = m
+		mode: import
+		source =
+				let
+				    Origen = marketing_campaign_clean,
+				    #"Otras columnas quitadas" = Table.SelectColumns(Origen,{"ID", "NumDealsPurchases", "NumWebPurchases", "NumCatalogPurchases", "NumStorePurchases"}),
+				    #"Columna de anulación de dinamización" = Table.UnpivotOtherColumns(#"Otras columnas quitadas", {"ID"}, "Atributo", "Valor"),
+				    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Columna de anulación de dinamización",{{"Atributo", "Channel"}, {"Valor", "Purchases"}})
+				in
+				    #"Columnas con nombre cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

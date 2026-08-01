@@ -1,0 +1,52 @@
+table campaign
+	lineageTag: 78d27947-6b90-499e-8972-c2b81c5eb9c5
+
+	measure 'Campaign Acceptance Rate' = ```
+			DIVIDE(SUM(Campaign[Accepted]), DISTINCTCOUNT(Campaign[ID]))
+			
+			```
+		lineageTag: 38005920-287b-44da-96b7-e57c3b958d00
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bf4e641-1e51-4161-abb8-bcc730e1a4cd
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Campaign
+		dataType: string
+		lineageTag: 99471276-5097-4711-807f-c1ba4f59c601
+		summarizeBy: none
+		sourceColumn: Campaign
+
+		annotation SummarizationSetBy = Automatic
+
+	column Accepted
+		dataType: int64
+		formatString: 0
+		lineageTag: f6cb1785-4969-4434-911d-fbb8c7837636
+		summarizeBy: sum
+		sourceColumn: Accepted
+
+		annotation SummarizationSetBy = Automatic
+
+	partition campaign = m
+		mode: import
+		source =
+				let
+				    Origen = marketing_campaign_clean,
+				    #"Otras columnas quitadas" = Table.SelectColumns(Origen,{"ID", "AcceptedCmp1", "AcceptedCmp2", "AcceptedCmp4", "AcceptedCmp5", "AcceptedCmp3", "Response"}),
+				    #"Columna de anulación de dinamización" = Table.UnpivotOtherColumns(#"Otras columnas quitadas", {"ID"}, "Atributo", "Valor"),
+				    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Columna de anulación de dinamización",{{"Atributo", "Campaign"}, {"Valor", "Accepted"}})
+				in
+				    #"Columnas con nombre cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,17 @@
+relationship 00bb206d-8619-4f0c-9b5b-24348d43a559
+	joinOnDateBehavior: datePartOnly
+	fromColumn: marketing_campaign_clean.Dt_Customer
+	toColumn: LocalDateTable_c8f97cbb-350a-41df-a443-a837ee7e5f7d.Date
+
+relationship 2f99e463-25fc-6ffa-cbf8-6d0b3896c3e0
+	fromColumn: channel.ID
+	toColumn: marketing_campaign_clean.ID
+
+relationship 540f4bf9-4cfc-a5bf-c1e5-3934ac3c4446
+	fromColumn: category.ID
+	toColumn: marketing_campaign_clean.ID
+
+relationship e7d7144d-dddb-78ec-a7a3-f599ad779f58
+	fromColumn: campaign.ID
+	toColumn: marketing_campaign_clean.ID
+

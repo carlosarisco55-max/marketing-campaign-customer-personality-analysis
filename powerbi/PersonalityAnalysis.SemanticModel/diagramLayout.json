@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 74
+          },
+          "nodeIndex": "campaign",
+          "nodeLineageTag": "78d27947-6b90-499e-8972-c2b81c5eb9c5",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 74
+          },
+          "nodeIndex": "category",
+          "nodeLineageTag": "c34512ba-5a37-4108-a919-ac43c6dd93ef",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 74
+          },
+          "nodeIndex": "channel",
+          "nodeLineageTag": "f1348c59-382d-4776-a858-ee53e7a42eb0",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 877.1404148617487,
+            "y": 0
+          },
+          "nodeIndex": "marketing_campaign_clean",
+          "nodeLineageTag": "410fb962-7f6c-4215-977f-36e2ee75301a",
+          "size": {
+            "height": 300,
+            "width": 208.8595851382513
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 79.553182037700068,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

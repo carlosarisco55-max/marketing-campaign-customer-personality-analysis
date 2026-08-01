@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "d12507b8d76b53614798",
+  "position": {
+    "x": 15,
+    "y": 342,
+    "z": 4000,
+    "height": 372,
+    "width": 1250,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "SO WHAT: Los clientes del top 25% de gasto (1.491 EUR de media) son los que MAS responden a campanas (30,1%) -- tus mejores clientes no estan saturados, estan receptivos.\n\nSin embargo: el 70% de ese top 25% NO respondio a la ultima campana (presupuesto mal dirigido, no falta de interes), y el 40% de ese mismo grupo no compra desde hace 60+ dias (riesgo real de fuga en el segmento mas valioso).\n\nRECOMENDACION: una campana de retencion dirigida especificamente al top 25% por gasto, no una campana masiva -- es donde el ROI por euro invertido es mas alto.",
+                    "textStyle": {
+                      "color": "#1A1A18",
+                      "fontSize": "13pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "''Segoe UI', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

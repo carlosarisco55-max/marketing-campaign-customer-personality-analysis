@@ -1,0 +1,24 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["marketing_campaign_clean","channel","category","campaign"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table marketing_campaign_clean
+ref table DateTableTemplate_b89ea6de-1b95-48a6-9b1c-09aabb0aeb26
+ref table LocalDateTable_c8f97cbb-350a-41df-a443-a837ee7e5f7d
+ref table channel
+ref table category
+ref table campaign
+
+ref cultureInfo es-ES
+

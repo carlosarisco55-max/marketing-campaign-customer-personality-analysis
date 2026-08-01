@@ -46,16 +46,21 @@ Elegido porque:
 
 - [x] Selección del dataset y definición del objetivo de negocio
 - [x] Limpieza y preparación de datos (`data/`)
-- [ ] Dashboard en Power BI (`powerbi/`) — guía de construcción lista, `.pbix` pendiente de subir
-- [ ] Dashboard interactivo en HTML con insights y "so what" (`dashboard/`)
+- [x] Dashboard en Power BI (`powerbi/`) — proyecto `.pbip` con 4 páginas, tema de marca y medidas DAX
+- [x] Dashboard interactivo en HTML con insights y "so what" (`dashboard/`)
 
 ## Estructura del repositorio
 
 ```
 data/       # Dataset (crudo y procesado) — ver data/README.md para cómo obtenerlo
-powerbi/    # Archivo .pbix y documentación del modelo/medidas DAX
-dashboard/  # Dashboard HTML interactivo con los insights finales
+powerbi/    # Proyecto Power BI (.pbip) — modelo, medidas DAX y las 4 páginas del informe
+dashboard/  # Dashboard HTML interactivo con los insights finales — ver dashboard/index.html
 ```
+
+## Ver el dashboard
+
+- **Dashboard HTML de insights**: [`dashboard/index.html`](dashboard/index.html)
+- **Proyecto Power BI**: abre `powerbi/PersonalityAnalysis.pbip` con Power BI Desktop (requiere el formato de proyecto `.pbip` activado en Opciones → Características en versión preliminar)
 
 ## Cómo obtener los datos
 

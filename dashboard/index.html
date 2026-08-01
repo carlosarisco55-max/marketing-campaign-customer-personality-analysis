@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Customer Personality Analysis — Insights & So What</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dashboard de insights de marketing sobre 2.236 clientes reales: qué campaña funcionó, qué canal genera más ingresos, y dónde está la oportunidad de crecimiento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EFE9;
+    --paper-dim:#E7E4DB;
+    --ink:#1A1A18;
+    --ink-soft:#57544C;
+    --line:#D8D4C8;
+    --mustard:#C08A2E;
+    --sage:#4C7C6E;
+    --terracotta:#B5533C;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --display: 'Space Grotesk', ui-sans-serif, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--display); -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+
+  header{padding:48px 0 28px; border-bottom:1px solid var(--line);}
+  .back{font-family:var(--mono); font-size:13px; text-decoration:none; border-bottom:1px solid var(--mustard); padding-bottom:1px; display:inline-block; margin-bottom:20px;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px;}
+  h1{font-size:clamp(26px,4.5vw,38px); line-height:1.12; margin:0 0 14px; font-weight:700; text-wrap:balance;}
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:66ch; line-height:1.6; margin:0;}
+
+  section{padding:40px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px;}
+  h2{font-size:20px; margin:0 0 18px; font-weight:700; text-wrap:balance;}
+
+  /* KPI row */
+  .kpi-row{display:grid; grid-template-columns:repeat(5,1fr); gap:10px;}
+  .kpi{background:#fff; border:1px solid var(--line); border-radius:4px; padding:16px 14px;}
+  .kpi-val{font-family:var(--mono); font-size:24px; font-weight:600; color:var(--sage); font-variant-numeric:tabular-nums;}
+  .kpi-label{font-size:11.5px; color:var(--ink-soft); margin-top:4px;}
+
+  /* bar chart */
+  .bars{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+  .bar-row{display:grid; grid-template-columns:160px 1fr 60px; align-items:center; gap:12px; font-size:13.5px;}
+  .bar-label{color:var(--ink-soft);}
+  .bar-track{background:var(--paper-dim); border-radius:3px; height:20px; overflow:hidden;}
+  .bar-fill{height:100%; border-radius:3px 0 0 3px;}
+  .bar-fill.sage{background:var(--sage);}
+  .bar-fill.mustard{background:var(--mustard);}
+  .bar-fill.terracotta{background:var(--terracotta);}
+  .bar-val{font-family:var(--mono); font-size:13px; font-weight:600; text-align:right; font-variant-numeric:tabular-nums;}
+  .bar-highlight .bar-label, .bar-highlight .bar-val{font-weight:700; color:var(--ink);}
+
+  .so-what{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:3px solid var(--terracotta);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-top:18px;
+  }
+  .so-what .tag{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--terracotta); margin-bottom:6px; display:block;}
+  .so-what p{margin:0; font-size:14.5px; line-height:1.6;}
+  .so-what b{color:var(--ink);}
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  @media (max-width:700px){
+    .kpi-row{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;}
+    .bar-row{grid-template-columns:100px 1fr 50px;}
+  }
+
+  footer{padding:32px 0 56px; font-family:var(--mono); font-size:12px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <a class="back" href="https://carlosarisco55-max.github.io/#proyectos">← Volver al portfolio</a>
+    <div class="eyebrow">Marketing & Growth Analytics</div>
+    <h1>Customer Personality Analysis — insights y "so what"</h1>
+    <p class="lede">Análisis sobre 2.236 clientes reales de retail (dataset Kaggle). El objetivo no es describir los datos, sino traducirlos en decisiones concretas de marketing. Dashboard completo en Power BI disponible en el repositorio.</p>
+  </header>
+
+  <section>
+    <div class="section-head">01 · Overview</div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-val">2.236</div><div class="kpi-label">Clientes</div></div>
+      <div class="kpi"><div class="kpi-val">1,35M €</div><div class="kpi-label">Ingreso total</div></div>
+      <div class="kpi"><div class="kpi-val">606 €</div><div class="kpi-label">Valor medio / cliente</div></div>
+      <div class="kpi"><div class="kpi-val">14,9%</div><div class="kpi-label">Respuesta última campaña</div></div>
+      <div class="kpi"><div class="kpi-val">0,9%</div><div class="kpi-label">Tasa de quejas</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">02 · Campañas</div>
+    <h2>¿Qué campaña funcionó mejor?</h2>
+    <div class="bars">
+      <div class="bar-row"><span class="bar-label">Campaña 2</span><div class="bar-track"><div class="bar-fill sage" style="width:9%"></div></div><span class="bar-val">1,3%</span></div>
+      <div class="bar-row"><span class="bar-label">Campaña 1</span><div class="bar-track"><div class="bar-fill sage" style="width:43%"></div></div><span class="bar-val">6,4%</span></div>
+      <div class="bar-row"><span class="bar-label">Campaña 5</span><div class="bar-track"><div class="bar-fill sage" style="width:49%"></div></div><span class="bar-val">7,3%</span></div>
+      <div class="bar-row"><span class="bar-label">Campaña 3</span><div class="bar-track"><div class="bar-fill sage" style="width:49%"></div></div><span class="bar-val">7,3%</span></div>
+      <div class="bar-row"><span class="bar-label">Campaña 4</span><div class="bar-track"><div class="bar-fill sage" style="width:50%"></div></div><span class="bar-val">7,5%</span></div>
+      <div class="bar-row bar-highlight"><span class="bar-label">Última campaña</span><div class="bar-track"><div class="bar-fill mustard" style="width:100%"></div></div><span class="bar-val">14,9%</span></div>
+    </div>
+    <div class="so-what">
+      <span class="tag">So what</span>
+      <p>La última campaña <b>duplicó la tasa de aceptación</b> de las cinco anteriores (14,9% vs. una media de 6%). Sea lo que sea que cambió — oferta, segmentación, canal — es la plantilla a replicar, no un golpe de suerte a ignorar.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="two-col">
+      <div>
+        <div class="section-head">03 · Canales</div>
+        <h2>¿Qué canal genera más ingresos?</h2>
+        <div class="bars">
+          <div class="bar-row bar-highlight"><span class="bar-label">Tienda física</span><div class="bar-track"><div class="bar-fill sage" style="width:100%"></div></div><span class="bar-val">46%</span></div>
+          <div class="bar-row"><span class="bar-label">Web</span><div class="bar-track"><div class="bar-fill sage" style="width:70%"></div></div><span class="bar-val">33%</span></div>
+          <div class="bar-row"><span class="bar-label">Catálogo</span><div class="bar-track"><div class="bar-fill sage" style="width:46%"></div></div><span class="bar-val">21%</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-head">04 · Categoría</div>
+        <h2>¿En qué gastan?</h2>
+        <div class="bars">
+          <div class="bar-row bar-highlight"><span class="bar-label">Vino</span><div class="bar-track"><div class="bar-fill terracotta" style="width:100%"></div></div><span class="bar-val">50%</span></div>
+          <div class="bar-row"><span class="bar-label">Carne</span><div class="bar-track"><div class="bar-fill terracotta" style="width:55%"></div></div><span class="bar-val">28%</span></div>
+          <div class="bar-row"><span class="bar-label">Oro/regalo</span><div class="bar-track"><div class="bar-fill terracotta" style="width:15%"></div></div><span class="bar-val">7%</span></div>
+          <div class="bar-row"><span class="bar-label">Pescado</span><div class="bar-track"><div class="bar-fill terracotta" style="width:13%"></div></div><span class="bar-val">6%</span></div>
+          <div class="bar-row"><span class="bar-label">Dulces</span><div class="bar-track"><div class="bar-fill terracotta" style="width:10%"></div></div><span class="bar-val">5%</span></div>
+          <div class="bar-row"><span class="bar-label">Fruta</span><div class="bar-track"><div class="bar-fill terracotta" style="width:9%"></div></div><span class="bar-val">4%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="so-what">
+      <span class="tag">So what</span>
+      <p>La tienda física sigue siendo el canal dominante (46% de las compras) — cualquier estrategia "digital-first" aquí sería un error sin datos. Y <b>vino + carne son el 78% del gasto total</b>: el resto de categorías (oro, pescado, dulces, fruta) están infrautilizadas — ahí hay margen real de cross-sell sobre clientes que ya compran.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">05 · Quién responde más</div>
+    <h2>¿Qué perfil tiene mayor propensión a responder?</h2>
+    <div class="two-col">
+      <div>
+        <div class="bars">
+          <div class="bar-row bar-highlight"><span class="bar-label">Sin hijos</span><div class="bar-track"><div class="bar-fill sage" style="width:100%"></div></div><span class="bar-val">26,5%</span></div>
+          <div class="bar-row"><span class="bar-label">Con hijos</span><div class="bar-track"><div class="bar-fill sage" style="width:39%"></div></div><span class="bar-val">10,3%</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="bars">
+          <div class="bar-row bar-highlight"><span class="bar-label">PhD</span><div class="bar-track"><div class="bar-fill sage" style="width:100%"></div></div><span class="bar-val">20,8%</span></div>
+          <div class="bar-row"><span class="bar-label">Master</span><div class="bar-track"><div class="bar-fill sage" style="width:74%"></div></div><span class="bar-val">15,4%</span></div>
+          <div class="bar-row"><span class="bar-label">Graduación</span><div class="bar-track"><div class="bar-fill sage" style="width:65%"></div></div><span class="bar-val">13,5%</span></div>
+          <div class="bar-row"><span class="bar-label">Básico</span><div class="bar-track"><div class="bar-fill sage" style="width:18%"></div></div><span class="bar-val">3,7%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="so-what">
+      <span class="tag">So what</span>
+      <p>Clientes <b>sin hijos responden 2,5x más</b> que los que tienen hijos (26,5% vs 10,3%) — probablemente por menos restricción de presupuesto familiar. El nivel educativo importa más que la edad: PhD responde 5,6x más que educación básica. Un mensaje genérico "para todos" está desperdiciando presupuesto en el segmento equivocado.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">06 · Oportunidades de crecimiento</div>
+    <h2>Dónde está el margen real</h2>
+    <div class="bars">
+      <div class="bar-row"><span class="bar-label">Gasto bajo</span><div class="bar-track"><div class="bar-fill mustard" style="width:20%"></div></div><span class="bar-val">6,0%</span></div>
+      <div class="bar-row"><span class="bar-label">Gasto medio</span><div class="bar-track"><div class="bar-fill mustard" style="width:39%"></div></div><span class="bar-val">11,9%</span></div>
+      <div class="bar-row"><span class="bar-label">Gasto alto</span><div class="bar-track"><div class="bar-fill mustard" style="width:39%"></div></div><span class="bar-val">11,8%</span></div>
+      <div class="bar-row bar-highlight"><span class="bar-label">Gasto top 25%</span><div class="bar-track"><div class="bar-fill mustard" style="width:100%"></div></div><span class="bar-val">30,1%</span></div>
+    </div>
+    <div class="so-what">
+      <span class="tag">So what — el hallazgo principal</span>
+      <p>Los clientes del <b>top 25% de gasto (1.491 € de media) son los que MÁS responden a campañas (30,1%)</b> — tus mejores clientes no están "saturados", están receptivos. Y sin embargo:</p>
+      <p style="margin-top:10px;">→ el <b>70% de ese top 25% no respondió</b> a la última campaña — presupuesto de marketing mal dirigido, no falta de interés.<br>
+      → el <b>40% de ese mismo grupo no compra desde hace 60+ días</b> — riesgo real de fuga en tu segmento más valioso, no en el más barato de retener.</p>
+      <p style="margin-top:10px;"><b>Recomendación:</b> una campaña de retención dirigida específicamente al top 25% por gasto, no una campaña masiva — es donde el ROI por euro invertido es más alto.</p>
+    </div>
+  </section>
+
+  <footer>
+    Carlos García-Arisco Vílchez · Dataset: <a href="https://www.kaggle.com/datasets/rodsaldanha/arketing-campaign" target="_blank" rel="noopener">Customer Personality Analysis, Kaggle</a> · Análisis, Power BI y cálculos propios sobre datos limpios
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "CarlosBrand",
+  "dataColors": [
+    "#4C7C6E",
+    "#C08A2E",
+    "#B5533C",
+    "#8AA6A0",
+    "#D9A85C",
+    "#C98978",
+    "#3A5F55",
+    "#8F6421"
+  ],
+  "background": "#F1EFE9",
+  "foreground": "#1A1A18",
+  "foregroundNeutralSecondary": "#57544C",
+  "backgroundLight": "#FFFFFF",
+  "backgroundNeutral": "#E7E4DB",
+  "tableAccent": "#C08A2E"
+}

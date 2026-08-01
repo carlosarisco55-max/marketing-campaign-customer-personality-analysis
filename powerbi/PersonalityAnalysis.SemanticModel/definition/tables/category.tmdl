@@ -1,0 +1,44 @@
+table category
+	lineageTag: c34512ba-5a37-4108-a919-ac43c6dd93ef
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b2d3034-d0db-45bf-b77e-29e46dea0f36
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: de12dd9e-aba4-45bb-9293-4bb6cb034a59
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Spend
+		dataType: int64
+		formatString: 0
+		lineageTag: b32f028d-74c5-4a58-827a-7798ba3a373c
+		summarizeBy: sum
+		sourceColumn: Spend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition category = m
+		mode: import
+		source =
+				let
+				    Origen = marketing_campaign_clean,
+				    #"Otras columnas quitadas" = Table.SelectColumns(Origen,{"ID", "MntWines", "MntFruits", "MntMeatProducts", "MntFishProducts", "MntSweetProducts", "MntGoldProds"}),
+				    #"Columna de anulación de dinamización" = Table.UnpivotOtherColumns(#"Otras columnas quitadas", {"ID"}, "Atributo", "Valor"),
+				    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Columna de anulación de dinamización",{{"Atributo", "Category"}, {"Valor", "Spend"}})
+				in
+				    #"Columnas con nombre cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+
