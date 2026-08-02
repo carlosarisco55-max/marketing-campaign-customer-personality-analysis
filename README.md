@@ -71,3 +71,13 @@ El dataset no se incluye en este repositorio (requiere login en Kaggle para su d
 - Python / pandas para limpieza y preparación de datos
 - Power BI para el análisis exploratorio y el dashboard de negocio
 - HTML/CSS/JS para el dashboard interactivo final con los insights
+
+## Qué aprendí construyendo esto
+
+Apuntes personales sobre la parte de Power BI, para no partir de cero la próxima vez:
+
+- **Anular dinamización (unpivot) es la clave para poder graficar "por categoría".** Cuando los datos vienen en formato ancho (una columna por canal/producto/campaña), no hay forma de meterlos en un solo eje de un gráfico — hay que crear una tabla de referencia, quedarte con las columnas relevantes, y anular su dinamización para pasar a formato largo (`Atributo`/`Valor`). Lo hice tres veces (Channel, Category, Campaign) y a la tercera ya era mecánico.
+- **Las relaciones no se detectan solas.** Aunque las 4 tablas compartían la columna `ID`, Power BI no las conectó automáticamente — hubo que arrastrar `ID` a `ID` a mano, tabla por tabla, en la vista de Modelo.
+- **El formato `.pbip` (Power BI Project) convierte el informe en texto plano editable** — TMDL para el modelo, JSON para las páginas y visuales — en vez de un `.pbix` binario opaco. Eso es lo que permitió construir las 4 páginas del informe por código en vez de a golpe de ratón.
+- **Power BI Desktop no detecta cambios hechos directamente en los archivos del proyecto mientras está abierto.** Si edito los archivos por fuera y luego guardo desde Desktop (Ctrl+S) sin recargar antes, Desktop sobrescribe esos cambios con su propia versión en memoria — me pasó una vez y perdí un informe entero que tuve que reconstruir. La secuencia correcta: cerrar Desktop del todo (o recargarlo) antes de dar por hecho que los cambios externos se van a respetar.
+- **Una ruta de archivo local absoluta se queda grabada en el modelo** (dentro del origen de datos de Power Query) — si vas a subir el proyecto a un repo público, merece la pena revisarla antes de hacer commit, porque expone tu carpeta de usuario aunque no sea una contraseña.
