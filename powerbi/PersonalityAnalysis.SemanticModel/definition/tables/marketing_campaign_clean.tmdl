@@ -5,47 +5,43 @@ table marketing_campaign_clean
 			DISTINCTCOUNT('marketing_campaign_clean'[ID])
 			
 			```
-		formatString: 0
+		formatString: #,0
 		lineageTag: 6afd8b7f-1e9a-4aef-a6ed-867caac03dea
 
 	measure 'Total Revenue' = ```
 			SUM('marketing_campaign_clean'[Total_Spend])
 			
 			```
-		formatString: 0
+		formatString: "€"#,0
 		lineageTag: 7d8914c0-6eab-48dd-902d-4f80258c3c0b
 
 	measure 'Avg Customer Value' = ```
 			DIVIDE([Total Revenue], [Total Customers])
 			
 			```
+		formatString: "€"#,0.00
 		lineageTag: 86542e75-9afd-41c3-85c5-d9f81223ce96
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Avg Income' = ```
 			AVERAGE('marketing_campaign_clean'[Income])
 			
 			```
+		formatString: "€"#,0
 		lineageTag: eae387d1-3b0a-4cc9-b84e-386dc57b7de7
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Campaign Response Rate' = ```
 			DIVIDE(SUM('marketing_campaign_clean'[Response]), [Total Customers])
 			
 			```
+		formatString: 0.0%
 		lineageTag: 2b5a5c7e-5b92-4aec-9819-3b8ad0ca7a31
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Complaint Rate' = ```
 			DIVIDE(SUM('marketing_campaign_clean'[Complain]), [Total Customers])
 			
 			```
+		formatString: 0.0%
 		lineageTag: 497a9430-aac6-47e4-a873-ec4693afce6c
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ID
 		dataType: int64
@@ -83,7 +79,7 @@ table marketing_campaign_clean
 
 	column Income
 		dataType: int64
-		formatString: 0
+		formatString: "€"#,0
 		lineageTag: 6ed10fe0-d620-44e7-a996-b27344a6a4af
 		summarizeBy: sum
 		sourceColumn: Income
@@ -306,7 +302,7 @@ table marketing_campaign_clean
 
 	column Total_Spend
 		dataType: int64
-		formatString: 0
+		formatString: "€"#,0
 		lineageTag: 63b15159-797b-4aaf-81d3-d791b21fddf8
 		summarizeBy: sum
 		sourceColumn: Total_Spend
@@ -383,7 +379,7 @@ table marketing_campaign_clean
 		mode: import
 		source =
 				let
-				  Origen = Csv.Document(File.Contents("C:\Users\carlo\OneDrive\Portfolio\proyectos-datos\github-work\marketing-campaign-customer-personality-analysis\data\processed\marketing_campaign_clean.csv"), [Delimiter = ",", Columns = 32, QuoteStyle = QuoteStyle.None]),
+				  Origen = Csv.Document(File.Contents("C:\Users\carlo\OneDrive\Portfolio\proyectos-datos\Marketing Campaign Customer Personality analyssis\marketingcampaigncleandata\data\processed\marketing_campaign_clean.csv"), [Delimiter = ",", Columns = 32, QuoteStyle = QuoteStyle.None]),
 				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
 				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"ID", Int64.Type}, {"Year_Birth", Int64.Type}, {"Education", type text}, {"Marital_Status", type text}, {"Income", Int64.Type}, {"Kidhome", Int64.Type}, {"Teenhome", Int64.Type}, {"Dt_Customer", type date}, {"Recency", Int64.Type}, {"MntWines", Int64.Type}, {"MntFruits", Int64.Type}, {"MntMeatProducts", Int64.Type}, {"MntFishProducts", Int64.Type}, {"MntSweetProducts", Int64.Type}, {"MntGoldProds", Int64.Type}, {"NumDealsPurchases", Int64.Type}, {"NumWebPurchases", Int64.Type}, {"NumCatalogPurchases", Int64.Type}, {"NumStorePurchases", Int64.Type}, {"NumWebVisitsMonth", Int64.Type}, {"AcceptedCmp3", Int64.Type}, {"AcceptedCmp4", Int64.Type}, {"AcceptedCmp5", Int64.Type}, {"AcceptedCmp1", Int64.Type}, {"AcceptedCmp2", Int64.Type}, {"Complain", Int64.Type}, {"Response", Int64.Type}, {"Age", Int64.Type}, {"Total_Spend", Int64.Type}, {"Total_Purchases", Int64.Type}, {"Total_Campaigns_Accepted", Int64.Type}, {"Customer_Tenure_Days", Int64.Type}}, "es")
 				in

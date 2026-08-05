@@ -5,9 +5,8 @@ table campaign
 			DIVIDE(SUM(Campaign[Accepted]), DISTINCTCOUNT(Campaign[ID]))
 			
 			```
+		formatString: 0.0%
 		lineageTag: 38005920-287b-44da-96b7-e57c3b958d00
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column ID
 		dataType: int64

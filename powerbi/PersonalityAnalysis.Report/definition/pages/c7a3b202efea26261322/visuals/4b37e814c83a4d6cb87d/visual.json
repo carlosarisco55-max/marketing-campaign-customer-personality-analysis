@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "4b37e814c83a4d6cb87d",
+  "position": {
+    "x": 15,
+    "y": 447,
+    "z": 9000,
+    "height": 267,
+    "width": 1250,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "El segmento que MAS ingresos genera en volumen es Graduation (51,6% del total, 698.564 EUR en 1.126 clientes) -- es el motor real del negocio, no un extremo.\n\nPero por estado civil, los clientes Widow (viudos) tienen el valor medio mas alto de todos (739 EUR/cliente) pese a ser solo el 4,2% de la base (77 clientes) -- un nicho pequeno pero de alto valor, normalmente invisible si solo se mira el volumen total.\n\nRECOMENDACION: no tratar todos los segmentos igual -- Graduation sostiene el negocio, pero Widow merece una oferta diferenciada por su valor medio desproporcionado.",
+                    "textStyle": {
+                      "color": "#1A1A18",
+                      "fontSize": "13pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "''Segoe UI', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

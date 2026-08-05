@@ -20,7 +20,7 @@ table category
 
 	column Spend
 		dataType: int64
-		formatString: 0
+		formatString: "€"#,0
 		lineageTag: b32f028d-74c5-4a58-827a-7798ba3a373c
 		summarizeBy: sum
 		sourceColumn: Spend
